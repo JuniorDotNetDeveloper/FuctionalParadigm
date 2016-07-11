@@ -32,6 +32,12 @@ namespace FunctionalParadigmLinq
             var MinLength = tables.OrderBy(t => t.Length).Take(1).Select(t2 => new { Min = "it is a minimum lenght: " + t2.Length });
             var areaCollection = tables.Select(t => new { Area = (t.Length * t.Width)/1000 });
 
+            #region defer execution
+            int i = 2000;
+            var whereOperator = tables.Where(t => t.Width > i);
+            i = 1500;
+            foreach (var item in whereOperator) Console.WriteLine(item);
+            #endregion
 
             tables.Add(newTableObject(2220, 2220, 2220));
 
